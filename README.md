@@ -1,4 +1,2 @@
-
-
-g++ pid.cpp driver.cpp -o driver.out
+gcc pid.c
 ./driver.out

@@ -3,6 +3,7 @@
 
 struct PID {
   double integral_sum;
+  double previous_error;
   double kp;
   double ki;
   double kd;

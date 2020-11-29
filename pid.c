@@ -2,8 +2,6 @@
 
 #include <stdio.h>
 
-//double integral_sum = 0;
-
 double calculate_response(double error, double dt, struct PID *controller){
   double response =   calculate_proportional(error, dt, controller)
                     + calculate_integral(error, dt, controller)
@@ -26,21 +24,8 @@ double calculate_integral(double error, double dt, struct PID *controller){
 }
 
 double calculate_derivative(double error, double dt, struct PID *controller){
-  double derivative_response = 0.0;
+  double derivative_response = error - controller->previous_error;
+  controller->previous_error = error;
   printf("D: %f \n", derivative_response);
   return derivative_response;
-}
-
-//testing driver
-int main(){
-  struct PID controller;
-  controller.integral_sum = 0;
-  controller.kp = 2;
-  controller.ki = 2;
-  controller.kd = 2;
-
-
-  double response = calculate_response(5, 1, &controller);
-  response = calculate_response(5, 1, &controller);
-  return 0;
 }
