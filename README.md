@@ -1,2 +1,3 @@
-gcc pid.c
+gcc pid.c driver.c
+
 ./driver.out

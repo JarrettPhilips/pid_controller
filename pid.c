@@ -24,7 +24,7 @@ double calculate_integral(double error, double dt, struct PID *controller){
 }
 
 double calculate_derivative(double error, double dt, struct PID *controller){
-  double derivative_response = error - controller->previous_error;
+  double derivative_response = (error - controller->previous_error)/dt;
   controller->previous_error = error;
   printf("D: %f \n", derivative_response);
   return derivative_response;
